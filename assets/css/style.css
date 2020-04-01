@@ -1,0 +1,11 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#after_submit {
+    visibility: hidden;
+}
+
+#container_results {
+    margin-bottom: center;
+}
