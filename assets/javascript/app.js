@@ -1,28 +1,3 @@
-//timer
-var counter = 0
-var timeleft = 65;
-
-function convertSeconds(s) {
-    var min = floor(s / 60);
-    var sec = s % 60;
-    return nf(min, 2) + ':' + nf(sec,2);
-}
-
-function setup() {
-    noCanvas();
-
-    var timer = select('#timer');
-    timer.html(convertSeconds(timeleft - counter));
-
-    function timeIt() {
-        counter++;
-        timer.html(convertSeconds(timeleft - counter));
-    }
-    setInterval(timeIt, 1000);
-}
-
-
-
 //trivia game
 function removeDummy() {
 
@@ -32,6 +7,15 @@ function removeDummy() {
 }
 
 function check() {
+    //game variables
+    var correct = 0;
+    var incorrect = 20;
+    var unanswered = 0;
+    var timer = 60;
+    var timerOn = false;
+    var timerId = "";
+
+    //questions and answer data
     var question = [];
     question[0] = document.triviaGame.question1.value;
     question[1] = document.triviaGame.question2.value;
@@ -53,9 +37,7 @@ function check() {
     question[17] = document.triviaGame.question18.value;
     question[18] = document.triviaGame.question19.value;
     question[19] = document.triviaGame.question20.value;
-    var correct = 0;
-    var incorrect = 20;
-    var unanswered = 0;
+
     var correctAnswers = ["Oswald and Lucky Rabbit", "18", "Figaro", "Carpet", "Jabberwocky", "He was formed out of clouds", "Fantasia", "Della Duck", "5 Dozen",
         "Florian", "Bedknobs and Brooksticks", "Snow White and the Seven Dwarfs", "Jafar", "There are no problems", "The Snuggly Duckling", "Hum of idling movie projector and microphone",
         "4", "Padme Amidala", "8 pounds", "Become a prince, be rescued from drowning, and free the Genie"
@@ -100,10 +82,13 @@ function check() {
     removeDummy();
 }
 
-//create timer
-//press start button to start the game
+//show timer
+$('#timer').text(game.timer);
+$('#remaining-time').show();
 
+//select first answer to begin timer
 //create timer counting down
+
 //time remaining:
 
 //questions with answer selection

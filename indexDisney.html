@@ -14,13 +14,32 @@
 <body>
     <div class="jumbotron text-center" style="background-color: rgb(35, 48, 170)" font size="98px">
         <h1>Disney Trivia</h1>
-
-        <p id="timer">5:00</p>
-
     </div>
-    <div id="game" class="container">
-        <form id="triviaGame" name="triviaGame">
 
+    <div id="game" class="container">
+        <div style="font-weight: bold" id="timer"></div>
+        <script type="text/javascript">
+            var total_seconds = 60 * 10;
+            var c_minutes = parseInt(total_seconds / 60);
+            var c_minutes = parseInt(total_seconds % 60);
+
+            function checkTime() {
+                document.getElementById("timer").innerHTML = 'Time Left: ' + c_minutes + ' minutes ' + c_seconds + ' seconds';
+
+                if (total_seconds <= 0) {
+                    setTimeout('document.quiz.submit()', 1);
+                } else {
+                    total_seconds = total_seconds - 1;
+                    c_minutes = parseInt(total_seconds / 60);
+                    c_seconds = parseInt(total_seconds % 60);
+                    setTimeout("checkTime()", 1000);
+                }
+            }
+            setTimeout("checkTime()", 1000);
+        </script>
+
+        <form id="triviaGame" name="triviaGame">
+            <br>
             <p>What was the name of Walt Disney's first character?</p>
             <input type="radio" id="mc" name="question1" value="Snow White"> Snow White<br>
             <input type="radio" id="mc" name="question1" value="Oswald and Lucky Rabbit"> Oswald and Lucky Rabbit<br>
@@ -211,15 +230,7 @@
 
 
         <script src="assets/javascript/app.js"></script>
-
-
-
-
-
-
-
-
-
+        <script src="assets/javascript/app2.js"></script>
 
         <!-- last page with scoreboard -->
         <!-- <div class="timeRemaining"> -->
