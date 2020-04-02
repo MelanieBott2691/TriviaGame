@@ -1,26 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Advanced TriviaGame</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/reset/css">
 </head>
 
 <body>
+    <div id="start_container">
+        <header class="title">
 
-    <nav>
-        <!-- <a href="index.html">Start Game</a> -->
-        <div id="form_container">
+            <!-- <h1>Disney Trivia Game</h1> -->
+        </header>
+        <!-- Dynamically created quiz questions section -->
+        <div id="game_container">
             <h1>Disney Trivia Game</h1>
-            <form action="index.html">
-                <button id="start" type="submit">Start Game!</button>
-    </nav>
-    </div>
+            <h3>Time Remaining: <span id="countdown">60</span></h3>
+            <br>
+
+            <main id="quiz__questions" class="block">
+                <form id="form"></form>
+                <button type="submit" form="form" id="quiz__questions--btn">Check Answers</button>
+            </main>
+            <!-- Quiz results section -->
+            <div id="quiz__results" class="block">
+
+                <p>Correct Answers: <span id="correct">0</span></p>
+                <p>Incorrect Answers: <span id="incorrect">0</span></p>
+                <p>Unanswered: <span id="unanswered">0</span></p>
+
+                <form action="indexStart.html">
+                    <button type="submit">Play Again!</button>
+            </div>
+        </div>
+        <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
