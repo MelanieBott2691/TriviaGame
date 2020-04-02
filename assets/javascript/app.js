@@ -178,6 +178,7 @@ var questions = [{
     },
 ];
 
+//answer array
 var correctAnsArr = [
     "Oswald the Lucky Rabbit",
     "18",
