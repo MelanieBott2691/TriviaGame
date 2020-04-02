@@ -1,264 +1,255 @@
-//trivia game
-function removeDummy() {
+var correctAns = 0;
+var incorrectAns = 0;
+var unanswered = 0;
+var counter = 60;
+var timerCountdown = document.getElementById("countdown");
+var displayResults = document.getElementById("quiz__results");
+var displayQuestions = document.getElementById("quiz__questions");
 
-    var elem = document.getElementById("game");
-    elem.parentNode.removeChild(elem);
-    return false;
+displayResults.style.display = "none";
+
+function showResults() {
+    displayQuestions.style.display = "none";
+    displayResults.style.display = "block";
 }
 
-function check() {
-    //game variables
-    var correct = 0;
-    var incorrect = 20;
-    var unanswered = 0;
-    var timer = 60;
-    var timerOn = false;
-    var timerId = "";
+// Set Timer
+var timer = setTimeout(function() {
+    showResults();
+}, counter * 1000);
 
-    //questions and answer data
-    var question = [];
-    question[0] = document.triviaGame.question1.value;
-    question[1] = document.triviaGame.question2.value;
-    question[2] = document.triviaGame.question3.value;
-    question[3] = document.triviaGame.question4.value;
-    question[4] = document.triviaGame.question5.value;
-    question[5] = document.triviaGame.question6.value;
-    question[6] = document.triviaGame.question7.value;
-    question[7] = document.triviaGame.question8.value;
-    question[8] = document.triviaGame.question9.value;
-    question[9] = document.triviaGame.question10.value;
-    question[10] = document.triviaGame.question11.value;
-    question[11] = document.triviaGame.question12.value;
-    question[12] = document.triviaGame.question13.value;
-    question[13] = document.triviaGame.question14.value;
-    question[14] = document.triviaGame.question15.value;
-    question[15] = document.triviaGame.question16.value;
-    question[16] = document.triviaGame.question17.value;
-    question[17] = document.triviaGame.question18.value;
-    question[18] = document.triviaGame.question19.value;
-    question[19] = document.triviaGame.question20.value;
+// Set Countdown
+var countdown = setInterval(function() {
+    counter--;
+    timerCountdown.innerHTML = counter;
+    if (counter === 0) {
+        stopCountdown();
+        showResults();
+    }
+}, 1000);
 
-    var correctAnswers = ["Oswald and Lucky Rabbit", "18", "Figaro", "Carpet", "Jabberwocky", "He was formed out of clouds", "Fantasia", "Della Duck", "5 Dozen",
-        "Florian", "Bedknobs and Brooksticks", "Snow White and the Seven Dwarfs", "Jafar", "There are no problems", "The Snuggly Duckling", "Hum of idling movie projector and microphone",
-        "4", "Padme Amidala", "8 pounds", "Become a prince, be rescued from drowning, and free the Genie"
-    ];
+function stopCountdown() {
+    clearInterval(countdown);
+}
+//questions and answer data
+var questions = [{
+        question: "1. What was the name of Walt Disney's first character?",
+        answers: [
+            "Snow White",
+            "Oswald the Lucky Rabbit",
+            "Mickey Mouse"
+        ]
+    },
 
-    var i;
-    for (i = 0; i < 20; i++) {
-        console.log(question[i] + "=?" + correctAnswers[i]);
-        if (question[i] === correctAnswers[i]) {
-            correct++;
-            incorrect--;
-        } else if (question[i] === "") {
-            unanswered++;
-            incorrect--;
+    {
+        question: "2. How many lines did Aurora have in Sleeping Beauty?",
+        answers: [
+            "18",
+            "12",
+            "5"
+        ]
+    },
+
+    {
+        question: "3. Who was Walt Disney's favorite character?",
+        answers: [
+            "Mickey Mouse",
+            "Figaro",
+            "Donald Duck"
+        ]
+    },
+
+    {
+        question: "4. Which character from 'Aladdin' makes a cameo appearance in 'The Hunchback of Norte-Dame'?",
+        answers: [
+            "Jasmine",
+            "Genie",
+            "Carpet"
+        ]
+    },
+
+    {
+        question: "5. What poem does the Cheshire Cat sing in 'Alice in Wonderland'?",
+        answers: [
+            "The Road Not Taken",
+            "A Dream Within a Dream",
+            "Jabberwocky"
+        ]
+    },
+
+    {
+        question: "6. How was Pegasus created in 'Hercules'?",
+        answers: [
+            "He was formed out of clouds",
+            "He was created by Hades",
+            "He was formed from a lightening storm"
+        ]
+    },
+
+    {
+        question: "7. Which Disney movie was shown in limited theaters due to complicated audio?",
+        answers: [
+            "Fantasia",
+            "Sleeping Beauty",
+            "Beauty and the Beast"
+        ]
+    },
+
+    {
+        question: "8. What is the name of Donald Duck's sister?",
+        answers: [
+            "Della Duck",
+            "Daisy Duck",
+            "Delilah Duck"
+        ]
+    },
+
+    {
+        question: "9. How many eggs does Gaston eat for breakfast?",
+        answers: [
+            "2 Dozen",
+            "5 Dozen",
+            "12 Dozen"
+        ]
+    },
+
+    {
+        question: "10. Who is Snow White's prince?",
+        answers: [
+            "Phillip",
+            "Florian",
+            "Eugene"
+        ]
+    },
+
+    {
+        question: "11. Angela Lansbury plays a witch called Miss Eglantine Price in which Disney movie?",
+        answers: [
+            "Bedknobs and Broomsticks",
+            "Anastasia",
+            "The Last Unicorn"
+        ]
+    },
+
+    {
+        question: "12. Patrick Stewart has said that turning down this Disney character is his greatest regret.",
+        answers: [
+            "Scar",
+            "Prince John",
+            "Jafar"
+        ]
+    },
+
+    {
+        question: "13. What does 'hakuna matata' really mean?",
+        answers: [
+            "No worries for the rest of your days",
+            "There are no problems",
+            "Restful days to come"
+        ]
+    },
+
+    {
+        question: "14. What is the name of the pub that Flynn brings Rapunzel to in 'Tangled'?",
+        answers: [
+            "Gothel's Pub",
+            "The Snuggly Duckling",
+            "The Unicorn Den"
+        ]
+    },
+
+    {
+        question: "15. How was the lightsaber sound created?",
+        answers: [
+            "Sound effect machine",
+            "Hitting a radio transmitter and microphone together",
+            "Hum of idling movie projector and microphone"
+
+        ]
+    },
+
+    {
+        question: "16. Who is Luke and Leia's mother?",
+        answers: [
+            "Queen Breha Organa",
+            "Padme Amidala",
+            "Qui-Gon-Jinn"
+        ]
+    },
+];
+
+var correctAnsArr = [
+    "Oswald the Lucky Rabbit",
+    "18",
+    "Figaro",
+    "Carpet",
+    "Jabberwocky",
+    "He was formed out of clouds",
+    "Fantasia",
+    "Della Duck",
+    "5 Dozen",
+    "Florian",
+    "Bedknobs and Broomsticks",
+    "Jafar",
+    "There are no problems",
+    "The Snuggly Duckling",
+    "Hum of idling movie projector and microphone",
+    "Padme Amidala"
+
+];
+
+
+//display questions and answers
+for (var i = 0; i < questions.length; i++) {
+    var question = questions[i];
+
+    var sec = document.createElement("section");
+    sec.className = "quiz__questions--question q" + i;
+    sec.innerHTML = `<p>${question.question}</p>`;
+    document.getElementById("form").appendChild(sec);
+
+    for (var j = 0; j < question.answers.length; j++) {
+        // console.log(question.answers[j]);
+        var answer = question.answers[j];
+
+        var div = document.createElement("div");
+        var radioBtn = `<input type="radio" name="group${i}" value="${answer}">`
+        div.innerHTML = radioBtn + " " + answer;
+        // div.setAttribute("id", "answer");
+        document.querySelector(".q" + i).appendChild(div);
+    }
+}
+
+var form = document.forms["form"];
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    stopCountdown();
+
+    for (var i = 0; i < form.children.length; i++) {
+        var found = "";
+
+        for (var j = 0; j < form["group" + i].length; j++) {
+            if (form["group" + i][j].checked) {
+                found = form["group" + i][j].value;
+            }
+        }
+
+        if (found === correctAnsArr[i]) {
+            correctAns += 1;
+            found = "";
+        } else if (found === "") {
+            unanswered += 1;
+        } else {
+            incorrectAns += 1;
         }
     }
-    var message = ["Great job!", "That's just okay", "Do better next time"];
 
-    var range;
+    document.getElementById("correct").innerHTML = correctAns;
+    document.getElementById("incorrect").innerHTML = incorrectAns;
+    document.getElementById("unanswered").innerHTML = unanswered;
 
-    if (correct < 1) {
-        range = 2;
-    }
-
-    if (correct > 0 && correct < 3) {
-        range = 1;
-    }
-    if (correct > 2) {
-        range = 0;
-    }
-
-    console.log(correct);
-    console.log(range);
+    showResults();
 
 
-    document.getElementById("message").innerHTML = message[range];
 
-    document.getElementById("number_correct").innerHTML = "You got " + correct + " correct.";
-    document.getElementById("number_incorrect").innerHTML = "You missed " + incorrect;
-    document.getElementById("unanswered").innerHTML = "You skipped " + unanswered;
-
-    removeDummy();
-}
-
-//show timer
-$('#timer').text(game.timer);
-$('#remaining-time').show();
-
-//select first answer to begin timer
-//create timer counting down
-
-//time remaining:
-
-//questions with answer selection
-//question
-//answer selection
-
-//picture and message appear
-//correct or incorrect
-//if the player runs out of time, tell player times up and show correct answer
-
-//moves on to next question automatically
-//time pause a few seconds before moving on to the next question
-
-//runs through set amount of questions
-//the end page
-//Time Remaining:
-//All done message
-//correct answers:
-//incorrect answers:
-//unanswered:
-//Start over selection option that does not reload the page but resets the game
-
-// select all elements
-// const start = document.getElementById("start");
-// const quiz = document.getElementById("quiz");
-// const question = document.getElementById("question");
-// const qImg = document.getElementById("qImg");
-// const choiceA = document.getElementById("A");
-// const choiceB = document.getElementById("B");
-// const choiceC = document.getElementById("C");
-// const counter = document.getElementById("counter");
-// const timeGauge = document.getElementById("timeGauge");
-// const progress = document.getElementById("progress");
-// const scoreDiv = document.getElementById("scoreContainer");
-
-// // create our questions
-// let questions = [{
-//     question: "What does HTML stand for?",
-//     imgSrc: "img/html.png",
-//     choiceA: "Correct",
-//     choiceB: "Wrong",
-//     choiceC: "Wrong",
-//     correct: "A"
-// }, {
-//     question: "What does CSS stand for?",
-//     imgSrc: "img/css.png",
-//     choiceA: "Wrong",
-//     choiceB: "Correct",
-//     choiceC: "Wrong",
-//     correct: "B"
-// }, {
-//     question: "What does JS stand for?",
-//     imgSrc: "img/js.png",
-//     choiceA: "Wrong",
-//     choiceB: "Wrong",
-//     choiceC: "Correct",
-//     correct: "C"
-// }];
-
-// // create some variables
-
-// const lastQuestion = questions.length - 1;
-// let runningQuestion = 0;
-// let count = 0;
-// const questionTime = 10; // 10s
-// const gaugeWidth = 150; // 150px
-// const gaugeUnit = gaugeWidth / questionTime;
-// let TIMER;
-// let score = 0;
-
-// // render a question
-// function renderQuestion() {
-//     let q = questions[runningQuestion];
-
-//     question.innerHTML = "<p>" + q.question + "</p>";
-//     qImg.innerHTML = "<img src=" + q.imgSrc + ">";
-//     choiceA.innerHTML = q.choiceA;
-//     choiceB.innerHTML = q.choiceB;
-//     choiceC.innerHTML = q.choiceC;
-// }
-
-// start.addEventListener("click", startQuiz);
-
-// // start quiz
-// function startQuiz() {
-//     start.style.display = "none";
-//     renderQuestion();
-//     quiz.style.display = "block";
-//     renderProgress();
-//     renderCounter();
-//     TIMER = setInterval(renderCounter, 1000); // 1000ms = 1s
-// }
-
-// // render progress
-// function renderProgress() {
-//     for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
-//         progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
-//     }
-// }
-
-// // counter render
-
-// function renderCounter() {
-//     if (count <= questionTime) {
-//         counter.innerHTML = count;
-//         timeGauge.style.width = count * gaugeUnit + "px";
-//         count++
-//     } else {
-//         count = 0;
-//         // change progress color to red
-//         answerIsWrong();
-//         if (runningQuestion < lastQuestion) {
-//             runningQuestion++;
-//             renderQuestion();
-//         } else {
-//             // end the quiz and show the score
-//             clearInterval(TIMER);
-//             scoreRender();
-//         }
-//     }
-// }
-
-// // checkAnwer
-
-// function checkAnswer(answer) {
-//     if (answer == questions[runningQuestion].correct) {
-//         // answer is correct
-//         score++;
-//         // change progress color to green
-//         answerIsCorrect();
-//     } else {
-//         // answer is wrong
-//         // change progress color to red
-//         answerIsWrong();
-//     }
-//     count = 0;
-//     if (runningQuestion < lastQuestion) {
-//         runningQuestion++;
-//         renderQuestion();
-//     } else {
-//         // end the quiz and show the score
-//         clearInterval(TIMER);
-//         scoreRender();
-//     }
-// }
-
-// // answer is correct
-// function answerIsCorrect() {
-//     document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
-// }
-
-// // answer is Wrong
-// function answerIsWrong() {
-//     document.getElementById(runningQuestion).style.backgroundColor = "#f00";
-// }
-
-// // score render
-// function scoreRender() {
-//     scoreDiv.style.display = "block";
-
-//     // calculate the amount of question percent answered by the user
-//     const scorePerCent = Math.round(100 * score / questions.length);
-
-//     // choose the image based on the scorePerCent
-//     let img = (scorePerCent >= 80) ? "img/5.png" :
-//         (scorePerCent >= 60) ? "img/4.png" :
-//         (scorePerCent >= 40) ? "img/3.png" :
-//         (scorePerCent >= 20) ? "img/2.png" :
-//         "img/1.png";
-
-//     scoreDiv.innerHTML = "<img src=" + img + ">";
-//     scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
-//
+});
