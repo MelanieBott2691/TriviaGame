@@ -9,6 +9,7 @@ var displayQuestions = document.getElementById("quiz__questions");
 displayResults.style.display = "none";
 
 function showResults() {
+    playGenie();
     displayQuestions.style.display = "none";
     displayResults.style.display = "block";
 }
@@ -28,8 +29,13 @@ var countdown = setInterval(function() {
     }
 }, 1000);
 
+
 function stopCountdown() {
     clearInterval(countdown);
+}
+
+function playGenie() {
+    document.getElementById("audiotag2").play();
 }
 //questions and answer data
 var questions = [{

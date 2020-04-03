@@ -8,6 +8,10 @@ html {
     text-align: center;
 }
 
+#mysound {
+    src: url("assets/sound/star.mp3");
+}
+
 #game_container {
     box-sizing: border-box;
     text-align: center;
@@ -30,15 +34,6 @@ html {
     border-radius: 15px;
     margin-top: 50%;
     margin-bottom: 50%;
-}
-
-nav {
-    font-size: 45px;
-    color: white;
-    margin-top: 15%;
-    margin-bottom: 3%;
-    font-family: 'Josefin Sans', sans-serif;
-    font-family: 'Great Vibes', cursive;
 }
 
 #form_container {

@@ -8,19 +8,30 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/reset/css">
+    <audio id="audiotag" src="assets/sound/star.mp3"></audio>
+
+    <script>
+        var audio = document.getElementById("audiotag");
+
+        function playAndLoad() {
+            audio.play();
+            setTimeout(function() {
+                window.location = "indexStart.html";
+            }, 1600);
+        }
+    </script>
+
 </head>
 
-<body>
 
-    <nav>
-        <!-- <a href="index.html">Start Game</a> -->
-        <div id="form_container">
-            <h1>Disney Trivia Game</h1>
-            <form action="indexStart.html">
-                <button id="start" type="submit">Start Game!</button>
-    </nav>
+
+<body>
+    <div id="form_container">
+        <h1>Disney Trivia Game</h1>
+        <button id="anotherPage" onclick="playAndLoad();">Start!</button>
+
     </div>
+    <script src="/sound.js"></script>
 </body>
 
 </html>
