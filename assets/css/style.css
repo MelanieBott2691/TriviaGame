@@ -75,6 +75,10 @@ h3 {
     padding: 30px;
 }
 
+#quiz__questions {
+    font-size: 20px;
+}
+
 #quiz__results {
     height: auto;
     padding-bottom: 50px;
